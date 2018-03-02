@@ -20,11 +20,11 @@ and the name.
 
 We only consider the actual name as an entity. 
 - We only count the entire name
-  - Example: If we encounter the full name "Scott Walker", we only count the full name "Scott Walker".
-  We do not count just "Scott" or just "Walker"
+  - Example: If we encounter the full name "Paul Chryst", we only count the full name "Paul Chryst".
+  We do not count just "Paul" or just "Chryst"
 - We do not include “Doctor,” “Mr.” or any other prefixes/sufixes as part of the name.
-  - Example: Governor <n>Scott Walker</n>
-  - In the above example, "Governor" is not considered to be a part of the name
+  - Example: Coach <n>Paul Chryst</n>
+  - In the above example, "Coach" is not considered to be a part of the name
 - We do not consider grammatical endings as part of a name. For example, if an article contains the phrase 
-  “President Obama’s administration” we would only extract “Obama.” The apostrophe ‘s’ (‘s) is not considered 
+  “Paul Chryst’s team” we would only extract “Paul Chryst”. The apostrophe ‘s’ (‘s) is not considered 
   part of the name.
