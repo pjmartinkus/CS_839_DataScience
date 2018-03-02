@@ -1,6 +1,6 @@
 # Project Stage 1
 
-- [All 300 Documents](/Stage1/Data/All_Documents)
+- [All 300 Documents](/CS_839_DataScience/Stage1/Data/All_Documents)
 - [Documents in Set I (200 Training Documents)]
 - [Documents in Set J (100 Training Documents)]
 - [Code]
