@@ -6,3 +6,4 @@
 - [Code](https://github.com/pjmartinkus/CS_839_DataScience/tree/master/Stage1/HW1)
 - [Compressed File with all Files](https://github.com/pjmartinkus/CS_839_DataScience/blob/master/Stage1/HW1.zip)
 - [Project PDF](https://github.com/pjmartinkus/CS_839_DataScience/blob/master/Stage1/CS%20839%20Project%20Stage%201.pdf)
+- [Project Directory](https://github.com/pjmartinkus/CS_839_DataScience/tree/master/Stage1)
