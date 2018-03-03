@@ -4,5 +4,5 @@
 - [Documents in Set I (200 Training Documents)](https://github.com/pjmartinkus/CS_839_DataScience/tree/master/Stage1/Data/Train)
 - [Documents in Set J (100 Test Documents)](https://github.com/pjmartinkus/CS_839_DataScience/tree/master/Stage1/Data/Test)
 - [Code]
-- [Compressed File with all Files]
+- [Compressed File with all Files](https://github.com/pjmartinkus/CS_839_DataScience/blob/master/Stage1/HW1.zip)
 - [Project PDF]
