@@ -17,8 +17,10 @@ The Attributes:
 
 ### Table A: Walmart Data
 The data for table A was retrieved from walmart's website and conforms to the schema listed above.
+
 Length of the Walmart table: 3038 tuples
 
 ### Table B: Amazon Data
 The data for table A was retrieved from Amazon.com and conforms to the schema listed above.
+
 Length of the Amazon table: 3102 tuples
