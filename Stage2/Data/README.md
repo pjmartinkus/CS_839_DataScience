@@ -15,10 +15,10 @@ The Attributes:
   9. Operating System (String): The operating system included with the laptop.
   10. Battery Life (String): The amount of time the battery generally will last.
 
-###Table A: Walmart Data
+### Table A: Walmart Data
 The data for table A was retrieved from walmart's website and conforms to the schema listed above.
 Length of the Walmart table: 3038 tuples
 
-###Table B: Amazon Data
+### Table B: Amazon Data
 The data for table A was retrieved from Amazon.com and conforms to the schema listed above.
 Length of the Amazon table: 3102 tuples
