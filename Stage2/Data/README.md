@@ -16,7 +16,7 @@ The Attributes:
   10. Battery Life (String): The amount of time the battery generally will last.
 
 ### Table A: Walmart Data
-The data for table A was retrieved from walmart's website and conforms to the schema listed above.
+The data for table A was retrieved from walmart's website and conforms to the schema listed above. Unfortunatly, walmart's website does not allow the user to access more than 1000 results for a single search. We decided to combat this by splitting up our search by brand and the smaller tables for each brand can be found in the /Walmart_Brand_Data/ directory.
 
 Length of the Walmart table: 3038 tuples
 
