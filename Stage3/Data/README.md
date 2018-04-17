@@ -5,9 +5,9 @@ The Walmart Data contains product information about laptops and was retrieved fr
 
 The original Walmart data from stage 2 can be found in the Walmart.csv file. This is data is taken directly from the results of stage 2. For entity matching, we found that we needed to clean this table up. Specifically, we have made three important changes:
 
-    1. The RAM and hard-drive capacities are often listed in KB when in reality they should be GB. Sometimes the hard drive capicity is listed as 1000 Gb and other times as 1 TB so we set all occurances to 1 TB.
-    2. The names are very long and contain plenty of additional information such as the hard drive capacity or the processor type. We added an extra column called 'Clean Name' that has some of this additional information removed.
-    3. We updated to format to conform to py_entitymatching. Specifically, we added an id column and changed the quotes used for strings from a single quote to double quotes.
+1. The RAM and hard-drive capacities are often listed in KB when in reality they should be GB. Sometimes the hard drive capicity is listed as 1000 Gb and other times as 1 TB so we set all occurances to 1 TB.
+2. The names are very long and contain plenty of additional information such as the hard drive capacity or the processor type. We added an extra column called 'Clean Name' that has some of this additional information removed.
+3. We updated to format to conform to py_entitymatching. Specifically, we added an id column and changed the quotes used for strings from a single quote to double quotes.
 
 The resulting table for the walmart data after making these changes can be found in Walmart_clean.csv.
 
@@ -16,10 +16,10 @@ Length of the Walmart table: 3034 tuples
 ### Table B: Amazon Data
 Similarly, the data for table B was retrieved from Amazon.com for stage 2 and can be found in the Amazon.csv file. We also had to make some changes to clean the amazon data:
 
-    1. The RAM of many laptops is listed as 6GB when in reality it should be 8GB. Just like the walmart data we changed all occurances of 1000 GB to 1 TB.
-    2. Sometimes the brand Lenovo is listed as Lenovo_320. We changed all occurances of Lenovo_320 to just Lenovo.
-    3. Just like in the Walmart data we cleaned up the Name column and created a new Clean Name column.
-    4. Again, like the Walmart data, we needed to change the format of our table to match the requirments for py_entitymatching.
+1. The RAM of many laptops is listed as 6GB when in reality it should be 8GB. Just like the walmart data we changed all occurances of 1000 GB to 1 TB.
+2. Sometimes the brand Lenovo is listed as Lenovo_320. We changed all occurances of Lenovo_320 to just Lenovo.
+3. Just like in the Walmart data we cleaned up the Name column and created a new Clean Name column.
+4. Again, like the Walmart data, we needed to change the format of our table to match the requirments for py_entitymatching.
 
 The resulting table for the Amazon data can be found in Amazon_clean.csv.
 
