@@ -2,13 +2,83 @@ import pandas as pd
 import re
 
 
+def add_numeric_features(data):
+    # Keep track of update data
+    result = []
+
+    # For each tuple, add the new features
+    cols = list(data.columns)
+    for row in data.itertuples():
+        row = list(row)[1:len(row)]
+    
+        # Add an additioanl column with each of the following features changed to a numeric value
+        features = ['Screen Size', 'RAM', 'Hard Drive Capacity', 'Processor Speed', 'Battery Life']
+        for feat in features:
+            
+            # Check for null values for this feature
+            if pd.isnull(row[cols.index(feat)]) or pd.isnull(row[cols.index(feat)]):
+                val = float('nan')
+            
+            # Otherwise change to a numeric value
+            else:
+                val = float(re.sub('[^0-9.]', '', row[cols.index(feat)]))
+            
+            # Change TB to GB for hard drive capacity
+            if feat == 'Hard Drive Capacity' and val == 1:
+                val = 1000
+                
+            # Add new value to this row
+            row.append(val)
+        
+        # Add the new row to the results
+        result.append(row)
+
+    # Create a DataFrame
+    cols = ['ID', 'Name', 'Price', 'Brand', 'Screen Size', 'RAM', 'Hard Drive Capacity',
+            'Processor Type', 'Processor Speed', 'Operating System', 'Battery Life',
+            'Screen Size (Numeric)', 'RAM (Numeric)', 'Hard Drive Capacity (Numeric)',
+            'Processor Speed (Numeric)', 'Battery Life (Numeric)']
+    return pd.DataFrame(result, columns=cols)
+
+
+def impute_features(data):
+
+    # Find the mean of each feature
+    features = ['Price', 'Screen Size (Numeric)', 'RAM (Numeric)', 'Hard Drive Capacity (Numeric)',
+                'Processor Speed (Numeric)', 'Battery Life (Numeric)']
+    averages = {}
+    for feat in features:
+        averages[feat] = data[feat].mean()
+
+    # impute missing values with the average value
+    result = []
+    cols = list(data.columns)
+    for row in data.itertuples():
+        row = list(row)[1:len(row)]
+            
+        # check each feature
+        for feat in features:
+            if pd.isnull(row[cols.index(feat)]):
+                row[cols.index(feat)] = averages[feat]
+    
+        # Add the updated row to result
+        result.append(row)
+
+    # Return a dataframe
+    cols = ['ID', 'Name', 'Price', 'Brand', 'Screen Size', 'RAM', 'Hard Drive Capacity',
+            'Processor Type', 'Processor Speed', 'Operating System', 'Battery Life',
+            'Screen Size (Numeric)', 'RAM (Numeric)', 'Hard Drive Capacity (Numeric)',
+            'Processor Speed (Numeric)', 'Battery Life (Numeric)']
+    return pd.DataFrame(result, columns=cols)        
+
+
 '''
 This function returns 1.0 if both laptops are refurbished or neither laptop is 
 refurbished. It return 0.5 if the Name feature is missing for either laptop. It
 returns 0.0 if one laptop is refurbished and the other isn't.
 '''
 def refurbished(x, y):
-    # Check for null values
+	 # Check for null values
     if pd.isnull(x['Name']) or pd.isnull(y['Name']):
         return 0.5
 

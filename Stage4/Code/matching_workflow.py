@@ -1,7 +1,8 @@
 # Import files and packages
 import pandas as pd
+import numpy as np
 import py_entitymatching as em
-from Features import screen_ram_hd_equal
+from Features import screen_ram_hd_equal, refurbished
 
 def workflow(path_A, path_B, path_labeled):
     
@@ -40,6 +41,7 @@ def workflow(path_A, path_B, path_labeled):
     # Generate features
     feature_table = em.get_features_for_matching(A, B, validate_inferred_attr_types=False)
     feature_subset = feature_table.iloc[np.r_[4:10, 40:len(feature_table)], :]
+    em.add_blackbox_feature(feature_subset, 'refurbished', refurbished)
 
     # Extract feature vectors
     feature_vectors_dev = em.extract_feature_vecs(L, 
@@ -52,19 +54,26 @@ def workflow(path_A, path_B, path_labeled):
                                           strategy='mean')
 
     # Train using feature vectors from the labeled data
+    matcher = em.RFMatcher(name='RF')
     matcher.fit(table=feature_vectors_dev, 
                 exclude_attrs=['_id', 'ltable_ID', 'rtable_ID', 'gold'], 
                 target_attr='gold')
 
     # Extract feature vectors for the rest of the data
-    feature_vectors_dev = em.extract_feature_vecs(C,
-                                                  feature_table=feature_subset,
-                                                  attrs_after='gold')
+    feature_vectors = em.extract_feature_vecs(C, feature_table=feature_subset)
+
+    # Impute feature vectors with the mean of the column values.
+    feature_vectors = em.impute_table(feature_vectors, 
+                                      exclude_attrs=['_id', 'ltable_ID', 'rtable_ID'],
+                                      strategy='mean')
 
     # Make predictions for the whole data set
-    predictions = matcher.predict(table=feature_vectors_eval, 
-                                       exclude_attrs=['_id', 'ltable_ID', 'rtable_ID', 'gold'], 
+    predictions = matcher.predict(table=feature_vectors, 
+                                       exclude_attrs=['_id', 'ltable_ID', 'rtable_ID'], 
                                        append=True, 
                                        target_attr='predicted', 
                                        inplace=False)
-    return predictions
+    predictions = predictions.loc[:, ['_id', 'ltable_ID', 'rtable_ID', 'predicted']]
+
+    return predictions[predictions['predicted'] == 1]
+
